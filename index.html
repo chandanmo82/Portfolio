@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+<script>try{var t=localStorage.getItem('ckm-theme');if(t){document.documentElement.setAttribute('data-theme',t);}}catch(e){}</script>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -410,7 +411,7 @@
       <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" onclick="(function(){var r=document.documentElement,t=r.getAttribute('data-theme')=='dark'?'light':'dark';r.setAttribute('data-theme',t);document.getElementById('toggleKnob').textContent=t==='dark'?'🌙':'☀️';try{localStorage.setItem('ckm-theme',t);}catch(e){}})();">
       <div class="theme-toggle-knob" id="toggleKnob">☀️</div>
     </button>
   </div>
