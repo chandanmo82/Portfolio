@@ -113,10 +113,13 @@
 
     /* SCROLL REVEAL */
     .reveal {
+      opacity: 1; transform: none;
+    }
+    .reveal.animate-ready {
       opacity: 0; transform: translateY(28px);
       transition: opacity 0.65s cubic-bezier(.25,.8,.25,1), transform 0.65s cubic-bezier(.25,.8,.25,1);
     }
-    .reveal.visible { opacity: 1; transform: none; }
+    .reveal.animate-ready.visible { opacity: 1; transform: none; }
 
     /* HERO */
     #hero {
@@ -625,9 +628,10 @@
     entries.forEach(function(e) {
       if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
     });
-  }, {threshold: 0.1});
+  }, {threshold: 0.05, rootMargin: '0px 0px -40px 0px'});
   document.querySelectorAll('.reveal').forEach(function(el, i) {
-    el.style.transitionDelay = (i % 4 * 80) + 'ms';
+    el.classList.add('animate-ready');
+    el.style.transitionDelay = (i % 3 * 60) + 'ms';
     revealObs.observe(el);
   });
 
